@@ -60,5 +60,4 @@ class ProductsControllerTest < ActionController::TestCase
     assert_select '#main #product_list h1', 'Listing products'
   end
 
-  
 end
