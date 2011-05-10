@@ -4,10 +4,10 @@ class ProductsControllerTest < ActionController::TestCase
   setup do
     @product = products(:one)
     @update = {
-      :title  => 'Test Data',
+      :title        => 'Lorem Ibsom',
       :description  => 'This is a description',
-      :image_url => 'lorem.jpg',
-      :price => 19.95
+      :image_url    => 'lorem.jpg',
+      :price        => 19.95
     }
   end
 
@@ -38,6 +38,7 @@ class ProductsControllerTest < ActionController::TestCase
   test "should get edit" do
     get :edit, :id => @product.to_param
     assert_response :success
+    assert_select '#main h1', 'Editing product'
   end
 
   test "should update product" do
@@ -52,4 +53,12 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
+  
+  test "should show products" do
+    get :index
+    assert_response :success
+    assert_select '#main #product_list h1', 'Listing products'
+  end
+
+  
 end
