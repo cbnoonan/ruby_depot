@@ -10,6 +10,8 @@ class Product < ActiveRecord::Base
     :with => %r{\.(gif|jpg|png)$}i,
     :message => 'must be a URL for GIF, JPG or PNG image.'
   }
+  validates :image_url,    :uniqueness => true
+  validates :price, :numericality => {:less_than_or_equal_to =>    1000}
   
   private
     #ensure that there are no line items referencing this product
