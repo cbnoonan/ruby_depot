@@ -1,5 +1,9 @@
 Depot::Application.routes.draw do
+  
+  match "/line_items/:id/decrement_quantity" => "line_items#decrement_quantity"
+  
   resources :line_items
+  # post 'decrement_quantity'
 
   resources :carts
 

@@ -4,14 +4,16 @@ class Product < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_line_item
     
   validates :title, :description, :image_url, :presence => true
-  validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
+  validates :price, :numericality => {:greater_than_or_equal_to => 0.01,
+                                      :less_than_or_equal_to =>    1000
+                                      }
+
   validates :title, :uniqueness => true, :length => {:minimum => 10, :message => "pick a longer title"}
   validates :image_url, :format => {
     :with => %r{\.(gif|jpg|png)$}i,
     :message => 'must be a URL for GIF, JPG or PNG image.'
   }
   validates :image_url,    :uniqueness => true
-  validates :price, :numericality => {:less_than_or_equal_to =>    1000}
   
   private
     #ensure that there are no line items referencing this product

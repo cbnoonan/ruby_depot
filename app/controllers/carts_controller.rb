@@ -82,9 +82,20 @@ class CartsController < ApplicationController
     session[:cart_id] = nil
 
     respond_to do |format|
-      format.html { redirect_to(store_url, 
-        :notice => 'Your cart is currently empty') }
+      format.html { redirect_to(store_url) }
+      format.js
       format.xml  { head :ok }
+    end
+  end
+  
+  def remove_product(item)
+    if item.quantity > 1
+      item.quantity -= 1
+      item.save
+      item #returns the current item if a quantity remains
+    else
+      item.destroy
+      # false #returns false if no items are left
     end
   end
 end

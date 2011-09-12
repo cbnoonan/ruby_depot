@@ -8,22 +8,29 @@
   <%= csrf_meta_tag %>
 </head>
 <body id="store">
-	<div id="banner">
-	<%= image_tag("logo.png") %>
-	<%= @page_title || "Pragmatic Bookshelf" %>
-	</div>
-	<div id="columns">
-		<div id="side">
-		<h1>Time is now <%= Time.now %></h1>
-			
-		<a href="http://www....">Home</a><br />
-		<a href="http://www....">Questions</a><br />
-		<a href="http://www....">News</a><br />
-		<a href="http://www....">Contact</a><br />
-		</div>
-	</div>
-	<div id="main">
-		<%= yield %>
-	</div>
+ <div id="banner">
+ <%= image_tag("logo.png") %>
+ <%= @page_title || "Pragmatic Bookshelf" %>
+ </div>
+ <div id="columns">
+  <div id="side">
+   <div id="cart">
+     <% if @cart %>
+       <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
+          <%= render @cart %>
+        <% end %>
+      <% end %>
+   </div> 
+  <h1>Time is now <%= Time.now %></h1>
+   
+  <a href="http://www....">Home</a><br />
+  <a href="http://www....">Questions</a><br />
+  <a href="http://www....">News</a><br />
+  <a href="http://www....">Contact</a><br />
+  </div>
+ </div>
+ <div id="main">
+  <%= yield %>
+ </div>
 </body>
 </html>

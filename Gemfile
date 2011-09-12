@@ -1,6 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.6'
+#gem "rails-footnotes", ">= 3.7.4", :group => :development
+gem "rails-footnotes", ">= 3.7.4"
+#, :group => :development
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
