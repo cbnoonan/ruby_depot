@@ -6,8 +6,8 @@
    <td><%= line_item.quantity %> &times;</td>
    <td><%= line_item.product.title %></td>
    <td class="item_price"><%= number_to_currency(line_item.total_price) %>
-   <%= button_to 'Delete Item', line_item, :method => :delete, :confirm => 'Are you sure?' %>
-   <%= link_to '+', {:action=>"decrement_quantity", :controller=>"line_items", :id => line_item.id}, :remote => true %>
+   <%= link_to 'Delete Item', line_item, :method => :delete, :confirm => 'Are you sure?' %>
+   <%= link_to '-', {:action=>"decrement_quantity", :controller=>"line_items", :id => line_item.id}, :remote => true %>
 
    </td>
- </tr>
+</tr>

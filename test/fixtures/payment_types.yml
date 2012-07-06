@@ -1,0 +1,8 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+Check:
+  id: 1
+  name: Check
+
+two:
+  name: MyString
