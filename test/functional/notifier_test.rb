@@ -1,6 +1,15 @@
 require 'test_helper'
 
 class NotifierTest < ActionMailer::TestCase
+  
+  # class ActionView::TestCase 
+  #   class TestController
+  #     def default_url_options
+  #       {:locale => 'en'}
+  #     end
+  #   end
+  # end
+  
   test "order_received" do
     mail = Notifier.order_received(orders(:one))
     assert_equal "Pragmatic Store Order Confirmation", mail.subject
@@ -10,6 +19,7 @@ class NotifierTest < ActionMailer::TestCase
   end
 
   test "order_shipped" do
+    # (:locale => 'en')
     mail = Notifier.order_shipped(orders(:one))
     assert_equal "Your order has been shipped", mail.subject
     assert_equal ["dave@example.org"], mail.to

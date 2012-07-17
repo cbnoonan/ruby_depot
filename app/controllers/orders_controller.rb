@@ -49,9 +49,11 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.xml
   def create
-    # payment_type was a string... now is a object
+    # payment_type was a string... now is a object @TODO
     params[:order][:payment_type] = PaymentType.new(params[:order][:payment_type])
     @order = Order.new(params[:order])
+  
+    
     @order.add_line_items_from_cart(current_cart)
     respond_to do |format|
       if @order.save
@@ -59,7 +61,7 @@ class OrdersController < ApplicationController
         session[:cart_id] = nil
         Notifier.order_received(@order).deliver
         format.html { redirect_to(store_url, :notice => 
-          'Thank you for your order.') }
+          I18n.t('.thanks')) }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
         format.html { render :action => "new" }

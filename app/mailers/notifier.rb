@@ -23,12 +23,6 @@ class Notifier < ActionMailer::Base
     mail :to => order.email, :subject => "Pragmatic Store Order Shipped"
   end
   
-  def order_shipped(order)
-    @order = order
-    
-    mail :to => order.email, :subject => "Your order has been shipped"
-  end
-  
   def error_occured(error)
     @error = error
     mail :to => "cbnoonan@visionation.com", :subject => 'Depot App Error Incident'
